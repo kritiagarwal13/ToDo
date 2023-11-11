@@ -10,15 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var tasks: [TaskModel] = []
-    @State private var newItem = ""
     @StateObject var viewModel = TodoViewModel()
     @State private var isSheetPresented = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(tasks) { task in
-                    Text(task.name)
+                ForEach(viewModel.tasks) { task in
+                    VStack {
+                        Text(task.title)
+                        Text(task.description)
+                    }
                 }
                 .onDelete(perform: deleteItem)
                 .onMove(perform: moveItem)

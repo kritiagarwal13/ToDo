@@ -6,13 +6,20 @@
 //
 
 import Foundation
+import Firebase
 
 class TodoViewModel: ObservableObject {
    
     @Published var tasks: [TaskModel] = []
     
     func fetchTasks() {
-        // fetch tasks from Firebase
+        FirebaseManager.shared.getTasks { fetchedTasks, error in
+            if let error = error {
+                print("Error fetching tasks: \(error.localizedDescription)")
+            } else if let fetchedTasks = fetchedTasks {
+                self.tasks = fetchedTasks
+            }
+        }
     }
     
 }

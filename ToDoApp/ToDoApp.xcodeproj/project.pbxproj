@@ -45,6 +45,7 @@
 		D69DF9E22AFFD1B1004324D0 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D69DF9E12AFFD1B1004324D0 /* FirebaseRemoteConfigSwift */; };
 		D69DF9E42AFFD1B1004324D0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D69DF9E32AFFD1B1004324D0 /* FirebaseStorage */; };
 		D69DF9E62AFFD1B1004324D0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D69DF9E52AFFD1B1004324D0 /* FirebaseStorageCombine-Community */; };
+		D6FC323E2AFFD59E00E8F9D3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC323D2AFFD59E00E8F9D3 /* FirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		D69DF9AA2AFFC3BC004324D0 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		D69DF9AC2AFFCF3B004324D0 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		D69DF9AE2AFFD0B5004324D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D6FC323D2AFFD59E00E8F9D3 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				D69DF9902AFF954C004324D0 /* ToDoAppApp.swift */,
 				D69DF9922AFF954C004324D0 /* ContentView.swift */,
+				D6FC323C2AFFD58700E8F9D3 /* DatabaseManager */,
 				D69DF9A92AFFC3AB004324D0 /* Model */,
 				D69DF9A42AFFA6E8004324D0 /* Common */,
 				D69DF9A62AFFB420004324D0 /* ViewModel */,
@@ -172,6 +175,14 @@
 				D69DF9AA2AFFC3BC004324D0 /* TaskModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D6FC323C2AFFD58700E8F9D3 /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC323D2AFFD59E00E8F9D3 /* FirebaseManager.swift */,
+			);
+			path = DatabaseManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 				D69DF9A12AFF98F2004324D0 /* TaskForm.swift in Sources */,
 				D69DF9AB2AFFC3BC004324D0 /* TaskModel.swift in Sources */,
 				D69DF9932AFF954C004324D0 /* ContentView.swift in Sources */,
+				D6FC323E2AFFD59E00E8F9D3 /* FirebaseManager.swift in Sources */,
 				D69DF9912AFF954C004324D0 /* ToDoAppApp.swift in Sources */,
 				D69DF99F2AFF95C4004324D0 /* FloatingButton.swift in Sources */,
 				D69DF9A82AFFB436004324D0 /* ToDoViewModel.swift in Sources */,

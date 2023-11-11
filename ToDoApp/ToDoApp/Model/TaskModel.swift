@@ -10,10 +10,9 @@ import SwiftUI
 struct TaskModel : Identifiable {
 
     var id : String = UUID().uuidString
-    let name : String
+    let title : String
     let description : String
-    let taskName : String
-    let date : Date
-    let priority : Priority
+    let date : Date = Date()
+    let priority : Priority = .low
     
 }

@@ -50,5 +50,16 @@ struct TaskForm: View {
         print("Description: \(String(describing: $description))")
         print("Date: \(String(describing: $date))")
         print("Priority: \(String(describing: $priority))")
+        let strDate = "\(date)" 
+        let strPriority = "\(priority)" 
+        
+        FirebaseManager.shared.saveData(title: title, description: description, date: strDate, priority: strPriority) { error in
+            if let error = error {
+                print("Error saving data: \(error.localizedDescription)")
+            } else {
+                print("Data saved successfully!")
+            }
+        }
+        
     }
 }
