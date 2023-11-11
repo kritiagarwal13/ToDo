@@ -5,6 +5,8 @@
 //  Created by Kriti Agarwal on 11/11/23.
 //
 
+import SwiftUI
+
 enum AppConstants {
     static let addIconImage = "plus.circle.fill"
 }

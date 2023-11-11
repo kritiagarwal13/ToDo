@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct TaskForm: View {
+    
     @State private var title = ""
     @State private var description = ""
     @State private var date = Date()
     @State private var priority = Priority.medium
     @State private var isSheetPresented = false
+    @State private var taskItem : TaskModel?
     
     var body: some View {
         NavigationView {
@@ -33,28 +35,20 @@ struct TaskForm: View {
                             Text(priority.rawValue.capitalized)
                         }
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-                
-                Section {
-                    Button("Save", action: {
-                        saveTask()
-                    })
-                    .frame(width: 120, height: 50)
-                    .foregroundColor(.accentColor)
-                    .cornerRadius(30)
-                    .padding()
                 }
             }
             .navigationTitle("New Task")
+            .navigationBarItems(trailing: SaveButton(action: {
+                saveTask()
+            }))
         }
     }
 
     func saveTask() {
         print("Task saved:")
-        print("Title: \(title)")
-        print("Description: \(description)")
-        print("Date: \(date)")
-        print("Priority: \(priority.rawValue)")
+        print("Title: \(String(describing: $title))")
+        print("Description: \(String(describing: $description))")
+        print("Date: \(String(describing: $date))")
+        print("Priority: \(String(describing: $priority))")
     }
 }

@@ -14,6 +14,9 @@
 		D69DF99F2AFF95C4004324D0 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DF99E2AFF95C4004324D0 /* FloatingButton.swift */; };
 		D69DF9A12AFF98F2004324D0 /* TaskForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DF9A02AFF98F2004324D0 /* TaskForm.swift */; };
 		D69DF9A32AFF9916004324D0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DF9A22AFF9916004324D0 /* AppConstants.swift */; };
+		D69DF9A82AFFB436004324D0 /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DF9A72AFFB436004324D0 /* ToDoViewModel.swift */; };
+		D69DF9AB2AFFC3BC004324D0 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DF9AA2AFFC3BC004324D0 /* TaskModel.swift */; };
+		D69DF9AD2AFFCF3B004324D0 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69DF9AC2AFFCF3B004324D0 /* SaveButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		D69DF99E2AFF95C4004324D0 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		D69DF9A02AFF98F2004324D0 /* TaskForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskForm.swift; sourceTree = "<group>"; };
 		D69DF9A22AFF9916004324D0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		D69DF9A72AFFB436004324D0 /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
+		D69DF9AA2AFFC3BC004324D0 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		D69DF9AC2AFFCF3B004324D0 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +65,9 @@
 			children = (
 				D69DF9902AFF954C004324D0 /* ToDoAppApp.swift */,
 				D69DF9922AFF954C004324D0 /* ContentView.swift */,
+				D69DF9A92AFFC3AB004324D0 /* Model */,
 				D69DF9A42AFFA6E8004324D0 /* Common */,
+				D69DF9A62AFFB420004324D0 /* ViewModel */,
 				D69DF9A52AFFA6FA004324D0 /* Component */,
 				D69DF9942AFF954D004324D0 /* Assets.xcassets */,
 				D69DF9962AFF954D004324D0 /* Preview Content */,
@@ -87,9 +95,26 @@
 			isa = PBXGroup;
 			children = (
 				D69DF99E2AFF95C4004324D0 /* FloatingButton.swift */,
+				D69DF9AC2AFFCF3B004324D0 /* SaveButton.swift */,
 				D69DF9A02AFF98F2004324D0 /* TaskForm.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		D69DF9A62AFFB420004324D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D69DF9A72AFFB436004324D0 /* ToDoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D69DF9A92AFFC3AB004324D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D69DF9AA2AFFC3BC004324D0 /* TaskModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,9 +188,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69DF9A12AFF98F2004324D0 /* TaskForm.swift in Sources */,
+				D69DF9AB2AFFC3BC004324D0 /* TaskModel.swift in Sources */,
 				D69DF9932AFF954C004324D0 /* ContentView.swift in Sources */,
 				D69DF9912AFF954C004324D0 /* ToDoAppApp.swift in Sources */,
 				D69DF99F2AFF95C4004324D0 /* FloatingButton.swift in Sources */,
+				D69DF9A82AFFB436004324D0 /* ToDoViewModel.swift in Sources */,
+				D69DF9AD2AFFCF3B004324D0 /* SaveButton.swift in Sources */,
 				D69DF9A32AFF9916004324D0 /* AppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var items: [String] = ["Item 1", "Item 2", "Item 3"]
+    
+    @State private var tasks: [TaskModel] = []
     @State private var newItem = ""
+    @StateObject var viewModel = TodoViewModel()
     @State private var isSheetPresented = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(items, id: \.self) { item in
-                    Text(item)
+                ForEach(tasks) { task in
+                    Text(task.name)
                 }
                 .onDelete(perform: deleteItem)
                 .onMove(perform: moveItem)
@@ -29,21 +31,23 @@ struct ContentView: View {
         }
         FloatingAddButton(action: {
             addItem()
-            isSheetPresented.toggle()
         })
+        
+        .onAppear {
+            viewModel.fetchTasks()
+        }
     }
     
     func addItem() {
-        let newItem = "New Item \(items.count + 1)"
-        items.append(newItem)
+        isSheetPresented.toggle()
     }
     
     func deleteItem(at offsets: IndexSet) {
-        items.remove(atOffsets: offsets)
+        
     }
     
     func moveItem(from source: IndexSet, to destination: Int) {
-        items.move(fromOffsets: source, toOffset: destination)
+        
     }
     
 }
