@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SaveButton: View {
     var action: () -> Void
+    var buttonTitle: () -> Text
     
     var body: some View {
         VStack {
@@ -17,7 +18,7 @@ struct SaveButton: View {
                 Button(action: {
                     self.action()
                 }) {
-                    Text("Save")
+                    buttonTitle()
                 }
                 .foregroundColor(.accentColor)
                 .cornerRadius(30)

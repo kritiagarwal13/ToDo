@@ -10,6 +10,7 @@ import Firebase
 
 class FirebaseManager {
     static let shared = FirebaseManager()
+    let viewModel = TodoViewModel()
     
     func saveData(title: String, description: String, date: String, priority: String, completion: @escaping (Error?) -> Void) {
         let database = Database.database().reference()
@@ -40,9 +41,11 @@ class FirebaseManager {
             
             // mapping tasksData to TaskModel
             let tasks = tasksData.compactMap { (key, value) in
-                return TaskModel(id: key, 
+                let stringDate = value["date"] as? String ?? ""
+                return TaskModel(id: key,
                                  title: value["title"] as? String ?? "",
                                  description: value["description"] as? String ?? "",
+                                 date: self.viewModel.convertStringToDate(from: stringDate),
                                  priority: Priority(rawValue: (value["priority"] as? String)!) ?? .low)
             }
             
@@ -61,6 +64,22 @@ class FirebaseManager {
                 completion(true, nil)
             }
         }
+    }
+    
+    func updateTask(withTask task: TaskModel, withtaskId id: String) {
+        // Update the task in the Realtime Database
+        let database = Database.database().reference()
+        let taskRef = database.child("tasks").child(id)
+        
+        let strDate = viewModel.formatDate(toStrDate: task.date ?? Date())
+        
+        // Update the task details
+        taskRef.updateChildValues([
+            "title": task.title,
+            "description": task.description,
+            "date": strDate ?? "", // Convert Date to timestamp
+            "priority": task.priority.rawValue
+        ])
     }
     
 }

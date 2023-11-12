@@ -9,14 +9,16 @@ import SwiftUI
 
 struct TaskForm: View {
     
-    @State private var title = ""
-    @State private var description = ""
-    @State private var date = Date()
-    @State private var priority = Priority.medium
+    @Binding var title: String
+    @Binding var description: String
+    @Binding var date: Date
+    @Binding var priority: Priority
     @State private var isSheetPresented = false
-    @State private var taskItem : TaskModel?
-    @State private var viewModel = TodoViewModel()
+//    @State private var taskItem : TaskModel?
+    @ObservedObject var viewModel = TodoViewModel()
     @Environment(\.presentationMode) var presentationMode
+    
+    var sheetTitle: String
     
     var body: some View {
         NavigationView {
@@ -39,14 +41,17 @@ struct TaskForm: View {
                     }
                 }
             }
-            .navigationTitle("New Task")
+            .navigationTitle(sheetTitle)
             .navigationBarItems(
                 leading: CancelButton(action: {
                     cancelTask()
                 }),
                 trailing: SaveButton(action: {
-                    saveTask()
-                }))
+                    viewModel.updateTask ? updateTask() : saveTask()
+                }) {
+                    viewModel.updateTask ? Text("Update") : Text("Save")
+                }
+            )
         }
     }
     
@@ -58,6 +63,12 @@ struct TaskForm: View {
         let strDate = viewModel.formatDate(toStrDate: date) ?? ""
         let strPriority = priority.rawValue
         viewModel.saveTask(withTitle: title, withDescription: description, withDate: strDate, withPriority: strPriority)
+        presentationMode.wrappedValue.dismiss()
+    }
+    
+    func updateTask() {
+        let taskToBeUpdated = TaskModel(id: viewModel.toBeUpdatedTaskId, title: title, description: description, date: date, priority: priority)
+        viewModel.updateTask(selectedTask: taskToBeUpdated)
         presentationMode.wrappedValue.dismiss()
     }
 }

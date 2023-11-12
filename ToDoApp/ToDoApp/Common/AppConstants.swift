@@ -12,5 +12,7 @@ enum AppConstants {
 }
 
 enum Priority: String, CaseIterable {
-    case low, medium, high
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
 }
