@@ -15,6 +15,7 @@ struct TaskForm: View {
     @State private var priority = Priority.medium
     @State private var isSheetPresented = false
     @State private var taskItem : TaskModel?
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
@@ -38,18 +39,21 @@ struct TaskForm: View {
                 }
             }
             .navigationTitle("New Task")
-            .navigationBarItems(trailing: SaveButton(action: {
-                saveTask()
-            }))
+            .navigationBarItems(
+                leading: CancelButton(action: {
+                    cancelTask()
+                }),
+                trailing: SaveButton(action: {
+                    saveTask()
+                }))
         }
+    }
+    
+    func cancelTask() {
+        presentationMode.wrappedValue.dismiss()
     }
 
     func saveTask() {
-        print("Task saved:")
-        print("Title: \(String(describing: $title))")
-        print("Description: \(String(describing: $description))")
-        print("Date: \(String(describing: $date))")
-        print("Priority: \(String(describing: $priority))")
         let strDate = "\(date)" 
         let strPriority = "\(priority)" 
         

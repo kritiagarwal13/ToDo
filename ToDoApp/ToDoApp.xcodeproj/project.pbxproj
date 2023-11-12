@@ -46,6 +46,7 @@
 		D69DF9E42AFFD1B1004324D0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D69DF9E32AFFD1B1004324D0 /* FirebaseStorage */; };
 		D69DF9E62AFFD1B1004324D0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D69DF9E52AFFD1B1004324D0 /* FirebaseStorageCombine-Community */; };
 		D6FC323E2AFFD59E00E8F9D3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC323D2AFFD59E00E8F9D3 /* FirebaseManager.swift */; };
+		D6FC32422B005A4000E8F9D3 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC32412B005A4000E8F9D3 /* CancelButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		D69DF9AC2AFFCF3B004324D0 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		D69DF9AE2AFFD0B5004324D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6FC323D2AFFD59E00E8F9D3 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		D6FC32412B005A4000E8F9D3 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				D69DF99E2AFF95C4004324D0 /* FloatingButton.swift */,
 				D69DF9AC2AFFCF3B004324D0 /* SaveButton.swift */,
+				D6FC32412B005A4000E8F9D3 /* CancelButton.swift */,
 				D69DF9A02AFF98F2004324D0 /* TaskForm.swift */,
 			);
 			path = Component;
@@ -297,6 +300,7 @@
 				D69DF9A82AFFB436004324D0 /* ToDoViewModel.swift in Sources */,
 				D69DF9AD2AFFCF3B004324D0 /* SaveButton.swift in Sources */,
 				D69DF9A32AFF9916004324D0 /* AppConstants.swift in Sources */,
+				D6FC32422B005A4000E8F9D3 /* CancelButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
