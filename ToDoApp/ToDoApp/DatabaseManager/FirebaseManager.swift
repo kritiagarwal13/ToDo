@@ -13,7 +13,7 @@ class FirebaseManager {
     
     func saveData(title: String, description: String, date: String, priority: String, completion: @escaping (Error?) -> Void) {
         let database = Database.database().reference()
-        let taskRef = database.child("tasks").childByAutoId()
+        let taskRef = database.child("tasks").childByAutoId()               //AutoId gives a unique id for retrieval later
         
         let taskData: [String: Any] = [
             "title": title,
@@ -38,12 +38,28 @@ class FirebaseManager {
                 return
             }
             
-            // Map tasksData to TaskModel or your custom model
+            // mapping tasksData to TaskModel
             let tasks = tasksData.compactMap { (key, value) in
-                return TaskModel(id: key, title: value["title"] as? String ?? "", description: value["description"] as? String ?? "")
+                return TaskModel(id: key, 
+                                 title: value["title"] as? String ?? "",
+                                 description: value["description"] as? String ?? "",
+                                 priority: Priority(rawValue: (value["priority"] as? String)!) ?? .low)
             }
             
             completion(tasks, nil)
+        }
+    }
+    
+    func deleteTask(taskId: String, completion: @escaping (Bool, Error?) -> Void) {
+        let database = Database.database().reference()
+        let tasksRef = database.child("tasks").child(taskId)            //deleting the task node
+        
+        tasksRef.removeValue { error, _ in
+            if let error = error {
+                completion(false, error)
+            } else {
+                completion(true, nil)
+            }
         }
     }
     

@@ -17,13 +17,29 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(viewModel.tasks) { task in
-                    VStack {
-                        Text(task.title)
-                        Text(task.description)
+                    HStack{
+                        VStack(alignment: .leading) {
+                            Text(task.title)
+                                .fontWeight(.medium)
+                                .foregroundStyle(.primary)
+                            Text(viewModel.formatDate(toStrDate: task.date) ?? "")
+                                .fontWeight(.regular)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Text("\(task.priority.rawValue)")
+                            .fontWeight(.regular)
+                            .foregroundStyle(.secondary)
                     }
                 }
-                .onDelete(perform: deleteItem)
+                .onDelete { indexSet in
+                        for index in indexSet {
+                            let deletedTask = viewModel.tasks[index]
+                            deleteTask(taskId: deletedTask.id)
+                        }
+                    }
                 .onMove(perform: moveItem)
+                
             }
             .navigationTitle("Your Tasks")
             .navigationBarItems(leading: EditButton())
@@ -44,8 +60,8 @@ struct ContentView: View {
         isSheetPresented.toggle()
     }
     
-    func deleteItem(at offsets: IndexSet) {
-        
+    func deleteTask(taskId: String) {
+        viewModel.deleteTasks(withTaskId: taskId)
     }
     
     func moveItem(from source: IndexSet, to destination: Int) {
