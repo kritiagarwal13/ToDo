@@ -14,7 +14,6 @@ struct TaskForm: View {
     @Binding var date: Date
     @Binding var priority: Priority
     @State private var isSheetPresented = false
-//    @State private var taskItem : TaskModel?
     @ObservedObject var viewModel = TodoViewModel()
     @Environment(\.presentationMode) var presentationMode
     

@@ -10,9 +10,7 @@ import Firebase
 
 @main
 struct ToDoAppApp: App {
- 
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+     
     init() {
         FirebaseApp.configure()
     }
@@ -23,12 +21,3 @@ struct ToDoAppApp: App {
         }
     }
 }
-
-
-//class AppDelegate: NSObject, UIApplicationDelegate {
-//  func application(_ application: UIApplication,
-//                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//    FirebaseApp.configure()
-//    return true
-//  }
-//}
