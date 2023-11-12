@@ -15,6 +15,7 @@ struct TaskForm: View {
     @State private var priority = Priority.medium
     @State private var isSheetPresented = false
     @State private var taskItem : TaskModel?
+    @State private var viewModel = TodoViewModel()
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -54,16 +55,9 @@ struct TaskForm: View {
     }
 
     func saveTask() {
-        let strDate = "\(date)" 
-        let strPriority = "\(priority)" 
-        
-        FirebaseManager.shared.saveData(title: title, description: description, date: strDate, priority: strPriority) { error in
-            if let error = error {
-                print("Error saving data: \(error.localizedDescription)")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-        
+        let strDate = viewModel.formatDate(toStrDate: date) ?? ""
+        let strPriority = priority.rawValue
+        viewModel.saveTask(withTitle: title, withDescription: description, withDate: strDate, withPriority: strPriority)
+        presentationMode.wrappedValue.dismiss()
     }
 }
