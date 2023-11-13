@@ -13,6 +13,7 @@ struct TaskForm: View {
     @Binding var description: String
     @Binding var date: Date
     @Binding var priority: Priority
+    @Binding var isChecked: Bool
     @State private var isSheetPresented = false
     @ObservedObject var viewModel = TodoViewModel()
     @Environment(\.presentationMode) var presentationMode
@@ -60,13 +61,12 @@ struct TaskForm: View {
 
     func saveTask() {
         let strDate = viewModel.formatDate(toStrDate: date) ?? ""
-        let strPriority = priority.rawValue
-        viewModel.saveTask(withTitle: title, withDescription: description, withDate: strDate, withPriority: strPriority)
+        viewModel.saveTask(withTitle: title, withDescription: description, withDate: strDate, withPriority: priority.rawValue, ischecked: false)
         presentationMode.wrappedValue.dismiss()
     }
     
     func updateTask() {
-        let taskToBeUpdated = TaskModel(id: viewModel.toBeUpdatedTaskId, title: title, description: description, date: date, priority: priority)
+        let taskToBeUpdated = TaskModel(id: viewModel.toBeUpdatedTaskId, title: title, description: description, date: date, priority: priority, isChecked: isChecked)
         viewModel.updateTask(selectedTask: taskToBeUpdated)
         presentationMode.wrappedValue.dismiss()
     }

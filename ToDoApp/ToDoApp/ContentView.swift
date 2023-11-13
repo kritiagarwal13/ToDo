@@ -13,14 +13,21 @@ struct ContentView: View {
     @State private var description: String = ""
     @State private var date: Date = Date()
     @State private var priority: Priority = .low
+    @State private var isChecked: Bool = false
     @State private var isSheetPresented = false
     @State private var selectedTask: TaskModel?
 
     var body: some View {
             NavigationView {
                 List(selection: $selectedTask) {
-                    ForEach(viewModel.tasks, id: \.id) { task in
+                    ForEach(viewModel.tasks.indices, id: \.self) { index in
+                        let task = viewModel.tasks[index]
                         HStack {
+                            Checkbox(isChecked: $viewModel.tasks[index].isChecked)
+                                // to handle the checkbox tap
+                                .onTapGesture {
+                                    toggleCheckbox(at: index)
+                                }
                             VStack(alignment: .leading) {
                                 Text(task.title)
                                     .fontWeight(.medium)
@@ -35,6 +42,7 @@ struct ContentView: View {
                                 .foregroundStyle(.secondary)
                         }
                         .onTapGesture {
+                            // to handle the normal cell tap
                             openTask(withTaskId: task.id)
                         }
                     }
@@ -49,7 +57,7 @@ struct ContentView: View {
                 .navigationTitle("Your Tasks")
                 .navigationBarItems(leading: EditButton())
                 .sheet(isPresented: $isSheetPresented) {
-                    TaskForm(title: $title, description: $description, date: $date, priority: $priority, viewModel: viewModel, sheetTitle: "Task")
+                    TaskForm(title: $title, description: $description, date: $date, priority: $priority, isChecked: $isChecked, viewModel: viewModel, sheetTitle: "Task")
                 }
             }
             FloatingAddButton(action: {
@@ -79,6 +87,12 @@ struct ContentView: View {
             priority = task.priority
         }
         isSheetPresented.toggle()
+    }
+    
+    func toggleCheckbox(at index: Int) {
+        viewModel.tasks[index].isChecked.toggle()
+        viewModel.toBeUpdatedTaskId = viewModel.tasks[index].id
+        viewModel.updateTask(selectedTask: viewModel.tasks[index])
     }
 }
 

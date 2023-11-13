@@ -47,6 +47,7 @@
 		D69DF9E62AFFD1B1004324D0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D69DF9E52AFFD1B1004324D0 /* FirebaseStorageCombine-Community */; };
 		D6FC323E2AFFD59E00E8F9D3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC323D2AFFD59E00E8F9D3 /* FirebaseManager.swift */; };
 		D6FC32422B005A4000E8F9D3 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC32412B005A4000E8F9D3 /* CancelButton.swift */; };
+		D6FC32462B019FD200E8F9D3 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC32452B019FD200E8F9D3 /* Checkbox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		D69DF9AE2AFFD0B5004324D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6FC323D2AFFD59E00E8F9D3 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		D6FC32412B005A4000E8F9D3 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		D6FC32452B019FD200E8F9D3 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				D69DF9AC2AFFCF3B004324D0 /* SaveButton.swift */,
 				D6FC32412B005A4000E8F9D3 /* CancelButton.swift */,
 				D69DF9A02AFF98F2004324D0 /* TaskForm.swift */,
+				D6FC32452B019FD200E8F9D3 /* Checkbox.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				D69DF9AB2AFFC3BC004324D0 /* TaskModel.swift in Sources */,
 				D69DF9932AFF954C004324D0 /* ContentView.swift in Sources */,
 				D6FC323E2AFFD59E00E8F9D3 /* FirebaseManager.swift in Sources */,
+				D6FC32462B019FD200E8F9D3 /* Checkbox.swift in Sources */,
 				D69DF9912AFF954C004324D0 /* ToDoAppApp.swift in Sources */,
 				D69DF99F2AFF95C4004324D0 /* FloatingButton.swift in Sources */,
 				D69DF9A82AFFB436004324D0 /* ToDoViewModel.swift in Sources */,

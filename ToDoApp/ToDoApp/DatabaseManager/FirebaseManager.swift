@@ -12,7 +12,7 @@ class FirebaseManager {
     static let shared = FirebaseManager()
     let viewModel = TodoViewModel()
     
-    func saveData(title: String, description: String, date: String, priority: String, completion: @escaping (Error?) -> Void) {
+    func saveData(title: String, description: String, date: String, priority: String,  isChecked: Bool, completion: @escaping (Error?) -> Void) {
         let database = Database.database().reference()
         let taskRef = database.child("tasks").childByAutoId()               //AutoId gives a unique id for retrieval later
         
@@ -20,7 +20,8 @@ class FirebaseManager {
             "title": title,
             "description": description,
             "date": date,
-            "priority": priority
+            "priority": priority,
+            "isChecked": isChecked
         ]
         
         taskRef.setValue(taskData) { error, _ in
@@ -46,7 +47,8 @@ class FirebaseManager {
                                  title: value["title"] as? String ?? "",
                                  description: value["description"] as? String ?? "",
                                  date: self.viewModel.convertStringToDate(from: stringDate),
-                                 priority: Priority(rawValue: (value["priority"] as? String)!) ?? .low)
+                                 priority: Priority(rawValue: (value["priority"] as? String)!) ?? .low,
+                                 isChecked: value["isChecked"] as? Bool ?? false)
             }
             
             completion(tasks, nil)
@@ -77,8 +79,9 @@ class FirebaseManager {
         taskRef.updateChildValues([
             "title": task.title,
             "description": task.description,
-            "date": strDate ?? "", // Convert Date to timestamp
-            "priority": task.priority.rawValue
+            "date": strDate ?? "",
+            "priority": task.priority.rawValue,
+            "isChecked": task.isChecked
         ])
     }
     

@@ -14,8 +14,8 @@ class TodoViewModel: ObservableObject {
     @Published var updateTask: Bool = false
     @Published var toBeUpdatedTaskId: String = ""
     
-    func saveTask(withTitle: String, withDescription: String, withDate: String, withPriority: String) {
-        FirebaseManager.shared.saveData(title: withTitle, description: withDescription, date: withDate, priority: withPriority) { error in
+    func saveTask(withTitle: String, withDescription: String, withDate: String, withPriority: String, ischecked: Bool) {
+        FirebaseManager.shared.saveData(title: withTitle, description: withDescription, date: withDate, priority: withPriority, isChecked: ischecked) { error in
             if let error = error {
                 print("Error saving data: \(error.localizedDescription)")
             } else {
@@ -29,7 +29,7 @@ class TodoViewModel: ObservableObject {
             if let error = error {
                 print("Error fetching tasks: \(error.localizedDescription)")
             } else if let fetchedTasks = fetchedTasks {
-                self.tasks = fetchedTasks
+                self.tasks = fetchedTasks.sorted { !$0.isChecked && $1.isChecked }
             }
         }
     }
@@ -71,5 +71,4 @@ class TodoViewModel: ObservableObject {
     func timestampToDate(_ timestamp: TimeInterval) -> Date {
         return Date(timeIntervalSince1970: timestamp)
     }
-    
 }
