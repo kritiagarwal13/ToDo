@@ -19,15 +19,15 @@ class TodoViewModel: ObservableObject {
             if let error = error {
                 print("Error saving data: \(error.localizedDescription)")
             } else {
-                print("Data saved successfully!")
+                print(Constants.MessageConstants.dataSavedSuccessfully)
             }
         }
     }
     
     func fetchTasks() {
         FirebaseManager.shared.getTasks { fetchedTasks, error in
-            if let error = error {
-                print("Error fetching tasks")
+            if error != nil {
+                print(Constants.MessageConstants.errorFetchingTasks)
             } else if let fetchedTasks = fetchedTasks {
                 self.tasks = fetchedTasks.sorted { !$0.isChecked && $1.isChecked }
             }
@@ -37,7 +37,7 @@ class TodoViewModel: ObservableObject {
     func deleteTasks(withTaskId: String) {
         FirebaseManager.shared.deleteTask(taskId: withTaskId) { response, error in
             if response == true {
-                print("Item deleted successfully!")
+                print(Constants.MessageConstants.itemDeletedSuccessfully)
             } else {
                 print("Error deleting item: \(String(describing: error?.localizedDescription))")
             }

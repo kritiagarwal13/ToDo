@@ -19,6 +19,8 @@ class Constants {
         static let update = "Update"
         static let save = "Save"
         static let tasks = "tasks"
+        static let task = "task"
+        static let titleTasks = "Tasks"
     }
 
     enum DateFormat {
@@ -28,6 +30,9 @@ class Constants {
     
     enum MessageConstants {
         static let selectADate = "Select a date"
+        static let itemDeletedSuccessfully = "Item deleted successfully!"
+        static let errorFetchingTasks = "Error fetching tasks"
+        static let dataSavedSuccessfully = "Data saved successfully!"
     }
     
     enum IconConstants {
