@@ -1,9 +1,8 @@
 # ToDo
 
-**Context**
+**Description**
 
-This PR contains code for the ToDo app that demonstrates CRUD (Create, Read,
-Update, Delete) operations using Firebase Realtime Database.
+This is simple ToDo app that demonstrates CRUD (Create, Read, Update, Delete) operations using Firebase Realtime Database.
 
 **Changes Made**
 
@@ -26,16 +25,15 @@ Update, Delete) operations using Firebase Realtime Database.
 
 **Screenshots**
 
-
 <img src="https://github.com/kritiagarwal13/ToDo/assets/25651879/46788082-6e4d-4968-b2a9-5f4f644e751a" width="400" height="880">
-<img src="https://github.com/kritiagarwal13/ToDo/assets/25651879/abc14feb-3650-4383-978e-4926b3753699" width="400" height="880">
+<img src="https://github.com/kritiagarwal13/ToDo/assets/25651879/203caa87-ce79-472e-90bf-becae78fe8c8" width="400" height="880">
 
 
 -----------------
 
 
-<img src="https://github.com/kritiagarwal13/ToDo/assets/25651879/b95c18aa-0ee7-4dce-b243-989b893f1610" width="400" height="880">
-<img src="https://github.com/kritiagarwal13/ToDo/assets/25651879/f75730fd-f12b-4959-b09b-812d4f516425" width="400" height="880">
+<img src="https://github.com/kritiagarwal13/ToDo/assets/25651879/06ff29c8-3ef5-44d3-b905-a2496cc82f1b" width="400" height="880">
+<img src="https://github.com/kritiagarwal13/ToDo/assets/25651879/0872b9a0-5e10-41f8-acca-5706390b50a0" width="400" height="880">
 
 
  
