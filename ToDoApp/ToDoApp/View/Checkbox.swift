@@ -16,6 +16,7 @@ struct Checkbox: View {
             Image(systemName: isChecked ? Constants.IconConstants.checkmarkSelected : Constants.IconConstants.checkmarkUnselected)
                 .resizable()
                 .frame(width: 24, height: 24)
+                .foregroundColor(.accentColor)
         }
     }
 }
