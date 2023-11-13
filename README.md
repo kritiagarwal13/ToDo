@@ -21,7 +21,7 @@ Update, Delete) operations using Firebase Realtime Database.
 
 **Checklist**
 
-1. CRUD funcitons
+1. CRUD functions
 2. Checkbox selection and sort
 
 **Screenshots**
