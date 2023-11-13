@@ -22,25 +22,29 @@ struct ContentView: View {
                 List(selection: $selectedTask) {
                     ForEach(viewModel.tasks.indices, id: \.self) { index in
                         let task = viewModel.tasks[index]
+                        
                         HStack {
                             Checkbox(isChecked: $viewModel.tasks[index].isChecked)
-                                // to handle the checkbox tap
+                            // to handle the checkbox tap
                                 .onTapGesture {
                                     toggleCheckbox(at: index)
                                 }
-                            VStack(alignment: .leading) {
-                                Text(task.title)
-                                    .fontWeight(.medium)
-                                    .foregroundStyle(.primary)
-                                Text(viewModel.formatDate(toStrDate: task.date ?? Date()) ?? "")
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(task.title)
+                                        .fontWeight(.medium)
+                                        .foregroundStyle(.primary)
+                                    Text(viewModel.formatDate(toStrDate: task.date ?? Date()) ?? "")
+                                        .fontWeight(.regular)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Text("\(task.priority.rawValue)")
                                     .fontWeight(.regular)
                                     .foregroundStyle(.secondary)
                             }
-                            Spacer()
-                            Text("\(task.priority.rawValue)")
-                                .fontWeight(.regular)
-                                .foregroundStyle(.secondary)
                         }
+                        .contentShape(Rectangle()) // to ensure task details open on clicking anywhere in the cell
                         .onTapGesture {
                             // to handle the normal cell tap
                             openTask(withTaskId: task.id)
@@ -54,10 +58,10 @@ struct ContentView: View {
                     }
                 }
                 .listStyle(PlainListStyle())
-                .navigationTitle("Your Tasks")
+                .navigationTitle(Constants.AppConstants.titleTasks)
                 .navigationBarItems(leading: EditButton())
                 .sheet(isPresented: $isSheetPresented) {
-                    TaskForm(title: $title, description: $description, date: $date, priority: $priority, isChecked: $isChecked, viewModel: viewModel, sheetTitle: "Task")
+                    TaskForm(title: $title, description: $description, date: $date, priority: $priority, isChecked: $isChecked, viewModel: viewModel, sheetTitle: Constants.AppConstants.task)
                 }
             }
             FloatingAddButton(action: {
