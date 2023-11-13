@@ -14,7 +14,7 @@ struct Checkbox: View {
         Button(action: {
             isChecked.toggle()
         }) {
-            Image(systemName: isChecked ? "checkmark.circle.fill" : "circle")
+            Image(systemName: isChecked ? Constants.IconConstants.checkmarkSelected : Constants.IconConstants.checkmarkUnselected)
                 .resizable()
                 .frame(width: 24, height: 24)
         }

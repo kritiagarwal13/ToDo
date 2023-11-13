@@ -7,8 +7,34 @@
 
 import SwiftUI
 
-enum AppConstants {
-    static let addIconImage = "plus.circle.fill"
+class Constants {
+    enum AppConstants {
+        static let cancel = "Cancel"
+        static let taskDetails = "Task Details"
+        static let title = "Title"
+        static let description = "Description"
+        static let priority = "Priority"
+        static let date = "Date"
+        static let isChecked = "isChecked"
+        static let update = "Update"
+        static let save = "Save"
+        static let tasks = "tasks"
+    }
+
+    enum DateFormat {
+        static let ddMMyyyy = "dd-MM-yyyy"
+        static let locale = "en_US_POSIX"
+    }
+    
+    enum MessageConstants {
+        static let selectADate = "Select a date"
+    }
+    
+    enum IconConstants {
+        static let add = "plus.circle.fill"
+        static let checkmarkSelected = "checkmark.circle.fill"
+        static let checkmarkUnselected = "circle"
+    }
 }
 
 enum Priority: String, CaseIterable {

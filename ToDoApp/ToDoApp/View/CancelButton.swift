@@ -17,7 +17,7 @@ struct CancelButton: View {
                 Button(action: {
                     self.action()
                 }) {
-                    Text("Cancel")
+                    Text(Constants.AppConstants.cancel)
                 }
                 .foregroundColor(.accentColor)
                 .cornerRadius(30)

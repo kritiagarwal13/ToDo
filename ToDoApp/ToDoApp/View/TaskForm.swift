@@ -23,22 +23,30 @@ struct TaskForm: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Task Details")) {
-                    TextField("Title", text: $title)
-                    TextField("Description", text: $description)
+                Section(header: Text(Constants.AppConstants.taskDetails)) {
+                    TextField(Constants.AppConstants.title, text: $title)
+                    TextField(Constants.AppConstants.description, text: $description)
                 }
                 
-                Section(header: Text("Date")) {
-                    DatePicker("Select a date", selection: $date, displayedComponents: .date)
+                Section(header: Text(Constants.AppConstants.date)) {
+                    DatePicker(Constants.MessageConstants.selectADate, selection: $date, displayedComponents: .date)
                         .datePickerStyle(GraphicalDatePickerStyle())
                 }
                 
-                Section(header: Text("Priority")) {
-                    Picker("Priority", selection: $priority) {
+                Section(header: Text(Constants.AppConstants.priority)) {
+                    Picker(Constants.AppConstants.priority, selection: $priority) {
                         ForEach(Priority.allCases, id: \.self) { priority in
                             Text(priority.rawValue.capitalized)
                         }
                     }
+                }
+            }
+            .onAppear {
+                if !viewModel.updateTask {
+                    title = ""
+                    description = ""
+                    date = Date()
+                    priority = Priority.low
                 }
             }
             .navigationTitle(sheetTitle)
@@ -49,7 +57,7 @@ struct TaskForm: View {
                 trailing: SaveButton(action: {
                     viewModel.updateTask ? updateTask() : saveTask()
                 }) {
-                    viewModel.updateTask ? Text("Update") : Text("Save")
+                    viewModel.updateTask ? Text(Constants.AppConstants.update) : Text(Constants.AppConstants.save)
                 }
             )
         }

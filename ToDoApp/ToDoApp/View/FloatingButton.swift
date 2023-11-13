@@ -17,7 +17,7 @@ struct FloatingAddButton: View {
                 Button(action: {
                     self.action()
                 }) {
-                    Image(systemName: AppConstants.addIconImage)
+                    Image(systemName: Constants.IconConstants.add)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50, height: 50)

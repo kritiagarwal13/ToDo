@@ -14,14 +14,14 @@ class FirebaseManager {
     
     func saveData(title: String, description: String, date: String, priority: String,  isChecked: Bool, completion: @escaping (Error?) -> Void) {
         let database = Database.database().reference()
-        let taskRef = database.child("tasks").childByAutoId()               //AutoId gives a unique id for retrieval later
+        let taskRef = database.child(Constants.AppConstants.tasks).childByAutoId()               //AutoId gives a unique id for retrieval later
         
         let taskData: [String: Any] = [
-            "title": title,
-            "description": description,
-            "date": date,
-            "priority": priority,
-            "isChecked": isChecked
+            Constants.AppConstants.title: title,
+            Constants.AppConstants.description: description,
+            Constants.AppConstants.date: date,
+            Constants.AppConstants.priority: priority,
+            Constants.AppConstants.isChecked: isChecked
         ]
         
         taskRef.setValue(taskData) { error, _ in
@@ -31,24 +31,24 @@ class FirebaseManager {
     
     func getTasks(completion: @escaping ([TaskModel]?, Error?) -> Void) {
         let database = Database.database().reference()
-        let tasksRef = database.child("tasks")
+        let tasksRef = database.child(Constants.AppConstants.tasks)
         
         tasksRef.observe(.value) { (snapshot: DataSnapshot) in
             guard let tasksData = snapshot.value as? [String: [String: Any]] else {
-                let error = NSError(domain: "YourAppDomain", code: 123, userInfo: [NSLocalizedDescriptionKey: "Error converting snapshot data"])
+                let error = NSError()
                 completion(nil, error as Error)
                 return
             }
             
             // mapping tasksData to TaskModel
             let tasks = tasksData.compactMap { (key, value) in
-                let stringDate = value["date"] as? String ?? ""
+                let stringDate = value[Constants.AppConstants.date] as? String ?? ""
                 return TaskModel(id: key,
-                                 title: value["title"] as? String ?? "",
-                                 description: value["description"] as? String ?? "",
+                                 title: value[Constants.AppConstants.title] as? String ?? "",
+                                 description: value[Constants.AppConstants.description] as? String ?? "",
                                  date: self.viewModel.convertStringToDate(from: stringDate),
-                                 priority: Priority(rawValue: (value["priority"] as? String)!) ?? .low,
-                                 isChecked: value["isChecked"] as? Bool ?? false)
+                                 priority: Priority(rawValue: (value[Constants.AppConstants.priority] as? String ?? "")) ?? .low,
+                                 isChecked: value[Constants.AppConstants.isChecked] as? Bool ?? false)
             }
             
             completion(tasks, nil)
@@ -57,7 +57,7 @@ class FirebaseManager {
     
     func deleteTask(taskId: String, completion: @escaping (Bool, Error?) -> Void) {
         let database = Database.database().reference()
-        let tasksRef = database.child("tasks").child(taskId)            //deleting the task node
+        let tasksRef = database.child(Constants.AppConstants.tasks).child(taskId)            //deleting the task node
         
         tasksRef.removeValue { error, _ in
             if let error = error {
@@ -71,17 +71,17 @@ class FirebaseManager {
     func updateTask(withTask task: TaskModel, withtaskId id: String) {
         // Update the task in the Realtime Database
         let database = Database.database().reference()
-        let taskRef = database.child("tasks").child(id)
+        let taskRef = database.child(Constants.AppConstants.tasks).child(id)
         
         let strDate = viewModel.formatDate(toStrDate: task.date ?? Date())
         
         // Update the task details
         taskRef.updateChildValues([
-            "title": task.title,
-            "description": task.description,
-            "date": strDate ?? "",
-            "priority": task.priority.rawValue,
-            "isChecked": task.isChecked
+            Constants.AppConstants.title: task.title,
+            Constants.AppConstants.description: task.description,
+            Constants.AppConstants.date: strDate ?? "",
+            Constants.AppConstants.priority: task.priority.rawValue,
+            Constants.AppConstants.isChecked: task.isChecked
         ])
     }
     

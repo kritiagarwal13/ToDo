@@ -27,7 +27,7 @@ class TodoViewModel: ObservableObject {
     func fetchTasks() {
         FirebaseManager.shared.getTasks { fetchedTasks, error in
             if let error = error {
-                print("Error fetching tasks: \(error.localizedDescription)")
+                print("Error fetching tasks")
             } else if let fetchedTasks = fetchedTasks {
                 self.tasks = fetchedTasks.sorted { !$0.isChecked && $1.isChecked }
             }
@@ -50,25 +50,17 @@ class TodoViewModel: ObservableObject {
     
     func formatDate(toStrDate: Date) -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Set a specific locale if needed
-        dateFormatter.timeZone = TimeZone.current // Set a specific timezone if needed
+        dateFormatter.dateFormat = Constants.DateFormat.ddMMyyyy
+        dateFormatter.locale = Locale(identifier: Constants.DateFormat.locale)
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: toStrDate)
     }
     
     func convertStringToDate(from stringDate: String) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // Set a specific locale if needed
-        dateFormatter.timeZone = TimeZone.current // Set a specific timezone if needed
+        dateFormatter.dateFormat = Constants.DateFormat.ddMMyyyy
+        dateFormatter.locale = Locale(identifier: Constants.DateFormat.locale)
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.date(from: stringDate)
-    }
-    
-    func dateToTimestamp(_ date: Date) -> TimeInterval {
-        return date.timeIntervalSince1970
-    }
-
-    func timestampToDate(_ timestamp: TimeInterval) -> Date {
-        return Date(timeIntervalSince1970: timestamp)
     }
 }
