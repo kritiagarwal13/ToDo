@@ -18,7 +18,13 @@ struct ContentView: View {
     @State private var selectedTask: TaskModel?
 
     var body: some View {
-            NavigationView {
+        NavigationView {
+            if viewModel.tasks.isEmpty {
+                Text("Start Adding Tasks")
+                    .foregroundColor(.secondary)
+                    .font(.title3)
+                    .padding()
+            } else {
                 List(selection: $selectedTask) {
                     ForEach(viewModel.tasks.indices, id: \.self) { index in
                         let task = viewModel.tasks[index]
@@ -64,13 +70,14 @@ struct ContentView: View {
                     TaskForm(title: $title, description: $description, date: $date, priority: $priority, isChecked: $isChecked, viewModel: viewModel, sheetTitle: Constants.AppConstants.task)
                 }
             }
-            FloatingAddButton(action: {
-                addTask()
-            })
-            .onAppear {
-                viewModel.fetchTasks()
-            }
         }
+        FloatingAddButton(action: {
+            addTask()
+        })
+        .onAppear {
+            viewModel.fetchTasks()
+        }
+    }
 
     func addTask() {
         viewModel.updateTask = false
