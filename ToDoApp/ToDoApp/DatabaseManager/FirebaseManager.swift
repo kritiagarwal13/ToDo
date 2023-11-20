@@ -35,7 +35,7 @@ class FirebaseManager {
         
         tasksRef.observe(.value) { (snapshot: DataSnapshot) in
             guard let tasksData = snapshot.value as? [String: [String: Any]] else {
-                let error = NSError()
+                let error = FirError.parsingFailed
                 completion(nil, error as Error)
                 return
             }

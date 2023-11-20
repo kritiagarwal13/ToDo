@@ -47,3 +47,7 @@ enum Priority: String, CaseIterable {
     case medium = "medium"
     case high = "high"
 }
+
+enum FirError: Error {
+    case parsingFailed
+}
