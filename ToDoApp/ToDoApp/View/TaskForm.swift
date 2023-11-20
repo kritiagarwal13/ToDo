@@ -42,7 +42,7 @@ struct TaskForm: View {
                 }
             }
             .onAppear {
-                if !viewModel.updateTask {
+                if !viewModel.updateTaskValue {
                     title = ""
                     description = ""
                     date = Date()
@@ -55,9 +55,9 @@ struct TaskForm: View {
                     cancelTask()
                 }),
                 trailing: SaveButton(action: {
-                    viewModel.updateTask ? updateTask() : saveTask()
+                    viewModel.updateTaskValue ? updateTask() : saveTask()
                 }) {
-                    viewModel.updateTask ? Text(Constants.AppConstants.update) : Text(Constants.AppConstants.save)
+                    viewModel.updateTaskValue ? Text(Constants.AppConstants.update) : Text(Constants.AppConstants.save)
                 }
             )
         }

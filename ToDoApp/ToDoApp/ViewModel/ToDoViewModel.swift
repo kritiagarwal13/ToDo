@@ -11,7 +11,7 @@ import Firebase
 class TodoViewModel: ObservableObject {
     
     @Published var tasks: [TaskModel] = []
-    @Published var updateTask: Bool = false
+    @Published var updateTaskValue: Bool = false
     @Published var toBeUpdatedTaskId: String = ""
     
     func saveTask(withTitle: String, withDescription: String, withDate: String, withPriority: String, ischecked: Bool) {
